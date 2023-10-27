@@ -11,12 +11,12 @@ GUNICORN_BIN="venv/Scripts/gunicorn.exe"  # Replace with the actual path to your
 
 start() {
     echo "Starting $APP_NAME..."
-    $GUNICORN_BIN -c $GUNICORN_CONFIG run:app
+    sudo $GUNICORN_BIN -c $GUNICORN_CONFIG run:app
 }
 
 stop() {
     echo "Stopping $APP_NAME..."
-    pkill -f "$APP_NAME"
+    sudo pkill -f "$APP_NAME"
 }
 
 restart() {
