@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Gunicorn application name (change this to your Gunicorn app name)
-APP_NAME="Portfolio"
+APP_NAME="Flash_Web_App"
 
 # Gunicorn configuration file
 GUNICORN_CONFIG="gunicorn_config.py"
