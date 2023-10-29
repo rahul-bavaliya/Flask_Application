@@ -11,12 +11,12 @@ GUNICORN_CONFIG="gunicorn_config.py"
 GUNICORN_BIN="venv/bin/gunicorn"  # Replace with the actual path to your Gunicorn executable
 start() {
     echo "Starting $APP_NAME..."
-    sudo $GUNICORN_BIN -c $GUNICORN_CONFIG run:app
+    $GUNICORN_BIN -c $GUNICORN_CONFIG run:app
 }
 
 stop() {
     echo "Stopping $APP_NAME..."
-    sudo pkill -f "$APP_NAME"
+    pkill -f "$APP_NAME"
 }
 
 restart() {
