@@ -7,8 +7,8 @@ APP_NAME="Flash_Web_App"
 GUNICORN_CONFIG="gunicorn_config.py"
 
 # Path to the Gunicorn executable
-GUNICORN_BIN="venv/Scripts/gunicorn.exe"  # Replace with the actual path to your Gunicorn executable
-
+# GUNICORN_BIN="venv/Scripts/gunicorn.exe"  # Replace with the actual path to your Gunicorn executable
+GUNICORN_BIN="venv/bin/gunicorn"  # Replace with the actual path to your Gunicorn executable
 start() {
     echo "Starting $APP_NAME..."
     sudo $GUNICORN_BIN -c $GUNICORN_CONFIG run:app
