@@ -6,6 +6,13 @@ GUNICORN_CONFIG="gunicorn_config.py"  # Replace with the path to your Gunicorn c
 
 start() {
     echo "Starting $APP_NAME..."
+    
+    # Check if the port is in use
+    if lsof -i :$PORT &>/dev/null; then
+        echo "Port $PORT is already in use. Stopping the existing process..."
+        stop
+    fi
+    
     $GUNICORN_BIN -c $GUNICORN_CONFIG -D
     echo "$APP_NAME started."
 }
