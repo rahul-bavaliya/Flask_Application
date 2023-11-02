@@ -1,22 +1,19 @@
 #!/bin/bash
 
-# Gunicorn application name (change this to your Gunicorn app name)
-APP_NAME="Flash_Web_App"
+APP_NAME="Flask_Web_Application"
+GUNICORN_BIN="venv/bin/gunicorn"  # Replace with the path to your Gunicorn binary
+GUNICORN_CONFIG="gunicorn_config.py"  # Replace with the path to your Gunicorn config file
 
-# Gunicorn configuration file
-GUNICORN_CONFIG="gunicorn_config.py"
-
-# Path to the Gunicorn executable
-# GUNICORN_BIN="venv/Scripts/gunicorn.exe"  # Replace with the actual path to your Gunicorn executable
-GUNICORN_BIN="venv/bin/gunicorn"  # Replace with the actual path to your Gunicorn executable
 start() {
     echo "Starting $APP_NAME..."
-    $GUNICORN_BIN -c $GUNICORN_CONFIG run:app
+    $GUNICORN_BIN -c $GUNICORN_CONFIG -D
+    echo "$APP_NAME started."
 }
 
 stop() {
     echo "Stopping $APP_NAME..."
-    pkill -f "$APP_NAME"
+    pkill -f "$GUNICORN_BIN"
+    echo "$APP_NAME stopped."
 }
 
 restart() {
@@ -38,5 +35,3 @@ case "$1" in
         echo "Usage: $0 {start|stop|restart}"
         exit 1
 esac
-
-exit 0
